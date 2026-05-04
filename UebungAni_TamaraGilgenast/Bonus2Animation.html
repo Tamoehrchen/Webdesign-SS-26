@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=""width-device-width, initial-scale="1.0">
+    <title>Konsolen Animation Tamara Gilgenast</title>
+    <style></style>
+    </head>
+    <body>
+    </body>
+    <script>
+       
+        let greeting= true;
+
+setInterval(() => {
+    // 1. Konsole aufräumen
+    console.clear();
+
+
+    //Bild zeichnen mit bedingtem Wechsel
+
+    if(greeting===true){
+     console.log("    ,_     _,\n    |\\\\___//|\n    |=^   ^=|\n    \\=._Y_.=/\nmm  )   ´   (  ,\n|| /         \\ ))\n\\\\/         | ((\n \\ /|     | |))");
+        greeting= false;
+    }
+    else{
+        console.log("  ,_     _,\n  |\\\\___//|\n  |=0   0=|\n  \\=._Y_.=/\n  )   ´   (  ,\n /         \\ ((\n |         | ))\n/|  |   |  |((");
+        greeting= true;
+    }
+
+
+}, 600); // Ausführungsintervall in ms
+
+document.addEventListener('keyup', function() {
+  if (event.code === 'Space') 
+console.log("Du hast die Katze gestreichelt! Schnurrr!");
+});
+  
+
+    </script>
+</html>
