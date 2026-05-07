@@ -1,6 +1,6 @@
 
 const btn = document.getElementById("button");
-
+//Mouse Over triggert Zusammenziehen und wegspringen.
 btn.addEventListener("mouseover", function () {
 
 
@@ -9,8 +9,8 @@ btn.addEventListener("mouseover", function () {
 
     setTimeout(function () {
 
-        const x = (Math.random()-0.5) *800;
-        const y = (Math.random()-0.5) *500;
+        const x = (Math.random() - 0.5) * 800;
+        const y = (Math.random() - 0.5) * 500;
 
         btn.style.transition = "transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
 
@@ -19,17 +19,10 @@ btn.addEventListener("mouseover", function () {
         btn.style.backgroundColor = "rgb(243, 105, 105)";
         btn.style.borderColor = "rgb(245, 177, 177)";
 
-    }, 120);
+    }, 130);
 });
 
-btn.addEventListener("mouseleave", function () {
-
-    setTimeout(function () {
-        btn.style.backgroundColor = "";
-        btn.style.borderColor = "";
-    }, 500);
-});
-
+//Beim Klicken kommt ein Alert.
 btn.addEventListener("click", function () {
-    alert('You Got Me!');
+    alert('Du hast den Hasen erschossen!:(');
 });
