@@ -1,0 +1,23 @@
+ .body {
+   margin: 0;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: rgb(243, 235, 221);
+   font-family: sans-serif;
+   overflow: hidden;
+ }
+
+ #button {
+   height: 50px;
+   width: 350px;
+   background-color: rgb(145, 212, 144);
+   color: black;
+   border-radius: 50px;
+   border: 3px dotted rgb(43, 158, 20);
+   cursor: pointer;
+
+   transition:
+     transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+ }
