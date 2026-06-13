@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>404 - Seite konnte nicht gefunden werden...</title>
+
+<style>
+body{
+    font-family: Arial;
+    text-align: center;
+    margin-top: 100px;
+    background: #f4f4f4;
+}
+
+h1{
+    font-size: 100px;
+    margin-bottom: 10px;
+}
+
+input{
+    padding: 10px;
+    width: 400px;
+    font-size: 16px;
+}
+
+p{
+    color: #555;
+}
+</style>
+</head>
+<body>
+
+<h1>404</h1>
+
+<p>Korrekt! Gib nun dieses Passwort ein: </p>
+<p>OHNE LEERZEICHEN!</p>
+
+<b>R i n d f l e i s c h e t i k e t t i e r u n g s ü b e r w a c h u n g s a u f g a b e n ü b e r t r a g u n g s g e s e t z</b>
+
+<br><br>
+
+<input type="text" id="passwort" placeholder="Hier eingeben...">
+
+<script>
+const input = document.getElementById("passwort");
+
+input.addEventListener("input", function(){
+
+    if(input.value === "Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz"){
+        window.location.href = "4043.html";
+    }
+
+});
+</script>
+
+</body>
+</html>

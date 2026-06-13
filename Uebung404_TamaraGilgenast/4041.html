@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Seite konnte nicht gefunden werden...</title>
+    <style>
+body{
+    font-family: Arial;
+    text-align: center;
+    margin-top: 100px;
+    background: #f4f4f4;
+}
+
+h1{
+    font-size: 100px;
+    margin-bottom: 10px;
+}
+
+input{
+    padding: 10px;
+    width: 400px;
+    font-size: 16px;
+}
+
+p{
+    color: #555;
+}
+</style>
+</head>
+<body>
+
+<h2>404 -  Seite konnte nicht gefunden werden.</h2>
+
+<p>Um die angeforderte Seite zu finden, gib folgendes Passwort ein:</p>
+<p>OHNE LEERZEICHEN!</p>
+
+<b>D o n a u d a m p f s c h i f f f a h r t s g e s e l l s c h a f t s k a p i t ä n s m ü t z e</b>
+
+<br><br>
+
+<input type="text" id="passwort" placeholder="Hier eingeben...">
+
+<script>
+const input = document.getElementById("passwort");
+
+input.addEventListener("input", function(){
+
+    if(input.value === "Donaudampfschifffahrtsgesellschaftskapitänsmütze"){
+        window.location.href = "4042.html";
+    }
+
+});
+</script>
+
+</body>
+</html>
