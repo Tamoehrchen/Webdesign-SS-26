@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,19 +47,29 @@
             overflow: hidden;
         }
 
-        
         .faq-trigger {
+            display: block;
+            width: 100%;
             background: #e5e7eb;
+            border: none;
             padding: 1rem;
+            text-align: left;
+            font: inherit;
             font-weight: bold;
             cursor: pointer;
             user-select: none;
         }
 
+        .faq-trigger:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: -3px;
+        }
+
         .faq-content {
             padding: 1rem;
             background: white;
-            display: none; /* Wird via JS gesteuert */
+            display: none;
+            /* Wird via JS gesteuert */
         }
 
         .faq-item.is-open .faq-content {
@@ -83,6 +94,12 @@
             padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
+            font: inherit;
+        }
+
+        .btn-add:focus {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
         }
 
         /* Toast Container */
@@ -105,39 +122,55 @@
         }
 
         @keyframes slideIn {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
 
-        
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <main>
         <h1>Bonusaufgabe: Mit geschlossenen Augen 🎯</h1>
-        <p><strong>Status Quo:</strong> Die folgenden Komponenten funktionieren aktuell nur mit der Maus. Macht mindestens eine davon (idealerweise beide) vollständig barrierefrei.</p>
-        
+        <p><strong>Status Quo:</strong> Die folgenden Komponenten funktionieren aktuell nur mit der Maus. Macht
+            mindestens eine davon (idealerweise beide) vollständig barrierefrei.</p>
+
         <hr>
 
         <section aria-labelledby="faq-heading">
             <h2 id="faq-heading">Aufgabe 1: FAQ-Akkordeon</h2>
-            <p class="hint">Problem: Das aktuelle Element nutzt ein unsemantisches Div und reagiert nicht auf die Tastatur.</p>
-            
+            <p class="hint">Problem: Das aktuelle Element nutzt ein unsemantisches Div und reagiert nicht auf die
+                Tastatur.</p>
+
             <div class="faq-container">
-                
-                <div class="faq-item">
-                    <div class="faq-trigger">Wie lauten die Abgabefristen?</div>
-                    <div class="faq-content">
-                        Die Lösung muss bis zum Ende des Semesters im Moodle-Forum als Link (CodePen, Glitch oder GitHub Pages) gepostet werden.
-                    </div>
-                </div>
 
                 <div class="faq-item">
-                    <div class="faq-trigger">Wie viele Bonuspunkte kann ich erreichen?</div>
-                    <div class="faq-content">
-                        Für eine vollständig barrierefreie Umsetzung kannst du bis zu 2 Bonuspunkte erhalten.
+                    <button class="faq-trigger" id="faq1-button" aria-expanded="false" aria-controls="faq1">
+                        Wie lauten die Abgabefristen?
+                    </button>
+                    <div class="faq-content" id="faq1" role="region" aria-labelledby="faq1-button">
+                        Die Lösung muss bis zum Ende des Semesters im Moodle-Forum als Link (CodePen, Glitch oder
+                        GitHub
+                        Pages) gepostet werden.
                     </div>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <button class="faq-trigger" id="faq2-button" aria-expanded="false" aria-controls="faq2">Wie viele
+                    Bonuspunkte kann ich erreichen?
+                </button>
+
+                <div class="faq-content" id="faq2" role="region" aria-labelledby="faq2-button">
+                    Für eine vollständig barrierefreie Umsetzung kannst du bis zu 2 Bonuspunkte erhalten.
                 </div>
 
             </div>
@@ -146,19 +179,25 @@
         <hr>
 
         <section aria-labelledby="shop-heading">
+
             <h2 id="shop-heading">Aufgabe 2: „In den Warenkorb"-Bestätigung (Toast)</h2>
-            <p class="hint">Problem: Wenn der Button geklickt wird, erscheint zwar visuell ein Toast, ein Screenreader bekommt davon aber absolut nichts mit.</p>
-            
+            <p class="hint">Problem: Wenn der Button geklickt wird, erscheint zwar visuell ein Toast, ein Screenreader
+                bekommt davon aber absolut nichts mit.</p>
+
             <div class="shop-item">
                 <div>
                     <strong>Super-Duper Barrierefreiheit-Handbuch (E-Book)</strong>
                     <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">Preis: 0,00 €</p>
                 </div>
-                <div class="btn-add" id="addToCartBtn">In den Warenkorb</div>
+                <button class="btn-add" id="addToCartBtn">
+                    In den Warenkorb
+                </button>
+
+                <div class="toast-container" id="toastContainer" role="status" aria-live="polite" aria-atomic="true">
+                </div>
+
             </div>
 
-            <div class="toast-container" id="toastContainer">
-                </div>
         </section>
     </main>
 
@@ -167,10 +206,15 @@
         // 🛠 TODO: Das JS muss angepasst werden, da sich die HTML-Struktur (zu <button>) ändern wird.
         // Tipp: Achtet darauf, bei Klick das Attribut 'aria-expanded' zwischen true und false zu toggeln!
         const triggers = document.querySelectorAll('.faq-trigger');
-        
+
         triggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const item = trigger.closest('.faq-item');
+
+                const expanded = trigger.getAttribute("aria-expanded") === "true";
+
+                trigger.setAttribute("aria-expanded", !expanded);
+
                 item.classList.toggle('is-open');
             });
         });
@@ -196,4 +240,5 @@
         });
     </script>
 </body>
+
 </html>
